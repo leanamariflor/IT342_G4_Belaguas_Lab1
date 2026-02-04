@@ -1,4 +1,5 @@
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   return (
@@ -10,11 +11,11 @@ const Register = () => {
         <div className="row">
           <label className="field">
             <span>First name</span>
-            <input type="text" placeholder="Lia" />
+            <input type="text" placeholder="Name" />
           </label>
           <label className="field">
             <span>Last name</span>
-            <input type="text" placeholder="Belaguas" />
+            <input type="text" placeholder="Last name" />
           </label>
         </div>
         <label className="field">
@@ -25,15 +26,10 @@ const Register = () => {
           <span>Password</span>
           <input type="password" placeholder="Create a password" />
         </label>
-        <label className="field">
-          <span>Role</span>
-          <select>
-            <option>Student</option>
-            <option>Instructor</option>
-            <option>Admin</option>
-          </select>
-        </label>
         <button className="primary" type="button">Create account</button>
+        <p style={{ marginTop: '1rem', textAlign: 'center' }}>
+          Already have an account? <Link to="/login" style={{ color: '#10b981', textDecoration: 'none', fontWeight: '500' }}>Login</Link>
+        </p>
       </form>
     </section>
   )
