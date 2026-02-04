@@ -1,7 +1,5 @@
 # IT342_G4_Belaguas_Lab1
 
-Group 4 - Belaguas Lab 1 Project
-
 ## Project Structure
 
 - **web/** - React UI (Vite + React Router)
