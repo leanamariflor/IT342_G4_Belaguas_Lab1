@@ -1,11 +1,21 @@
+import { useNavigate } from 'react-router-dom'
 import '../App.css'
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+
+  const handleProfileClick = () => {
+    navigate('/profile')
+  }
+
   return (
     <section className="card page-card">
       <div className="card-header">
         <h2>Dashboard</h2>
         <p>Overview of activity and quick actions.</p>
+        <button className="primary" type="button" onClick={handleProfileClick}>
+          Go to Profile
+        </button>
       </div>
       <div className="stats">
         <div className="stat">

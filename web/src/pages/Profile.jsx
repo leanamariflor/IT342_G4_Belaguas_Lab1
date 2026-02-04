@@ -8,29 +8,27 @@ const Profile = () => {
         <p>Manage your personal information.</p>
       </div>
       <div className="profile">
-        <div className="avatar">LB</div>
+        <div className="avatar">NM</div>
         <div className="profile-info">
-          <p className="profile-name">Leana Belaguas</p>
-          <p className="profile-role">UI/UX Designer</p>
+          <p className="profile-name">Name</p>
+          <p className="profile-role">Role</p>
           <div className="profile-tags">
             <span>Active</span>
-            <span>Team Alpha</span>
-            <span>Manila</span>
           </div>
         </div>
       </div>
       <div className="profile-grid">
         <div>
           <p className="label">Email</p>
-          <p className="value">lia.belaguas@school.edu</p>
+          <p className="value">name@school.edu</p>
         </div>
         <div>
           <p className="label">Phone</p>
-          <p className="value">+63 912 345 6789</p>
+          <p className="value">+00 000 000</p>
         </div>
         <div>
           <p className="label">Department</p>
-          <p className="value">IT • UI Systems</p>
+          <p className="value">IT</p>
         </div>
         <div>
           <p className="label">Member since</p>
