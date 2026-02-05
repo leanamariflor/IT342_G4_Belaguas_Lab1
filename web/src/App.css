@@ -2,6 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 20px 80px;
+  
 }
 
 .app-header {
@@ -10,6 +11,7 @@
   justify-content: space-between;
   gap: 24px;
   margin-bottom: 28px;
+  
 }
 
 .brand {
@@ -77,6 +79,7 @@
 
 .page-card {
   width: min(520px, 100%);
+  margin-top: 100px;
 }
 
 .card {
@@ -199,7 +202,7 @@
 
 .stat-value {
   margin: 4px 0 0;
-  font-size: 1.4rem;
+  font-size: 1.0rem;
   font-weight: 700;
   color: var(--text);
 }

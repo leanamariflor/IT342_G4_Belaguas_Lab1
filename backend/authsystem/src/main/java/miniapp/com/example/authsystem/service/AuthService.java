@@ -1,6 +1,8 @@
 package miniapp.com.example.authsystem.service;
 
-import miniapp.com.example.authsystem.entity.UserEntity;
+import miniapp.com.example.authsystem.dto.LoginDto;
+import miniapp.com.example.authsystem.dto.UserDto;
+import miniapp.com.example.authsystem.entity.User;
 import miniapp.com.example.authsystem.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -8,21 +10,24 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-public class UserService {
+public class AuthService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public UserService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public UserEntity register(UserEntity user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
+    public User register(UserDto dto) {
+        if (userRepository.existsByEmail(dto.getEmail())) {
             throw new RuntimeException("Email already exists");
         }
 
-        user.setPassword(encoder.encode(user.getPassword()));
+        User user = new User();
+        user.setUsername(dto.getUsername());
+        user.setEmail(dto.getEmail());
+        user.setPassword(encoder.encode(dto.getPassword()));
         user.setRole("USER");
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
@@ -31,12 +36,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public UserEntity login(String email, String password) {
-        UserEntity user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    public User authenticate(LoginDto dto) {
+        User user = userRepository.findByEmail(dto.getEmail())
+                .orElseThrow(() -> new RuntimeException("Invalid credentials"));
 
-        if (!encoder.matches(password, user.getPassword())) {
-            throw new RuntimeException("Invalid password");
+        if (!encoder.matches(dto.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
         }
 
         user.setLastActive(LocalDateTime.now());

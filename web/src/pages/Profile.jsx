@@ -1,43 +1,48 @@
-import '../App.css'
+import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 const Profile = () => {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
-    <section className="card page-card">
-      <div className="card-header">
-        <h2>Profile</h2>
-        <p>Manage your personal information.</p>
-      </div>
-      <div className="profile">
-        <div className="avatar">NM</div>
-        <div className="profile-info">
-          <p className="profile-name">Name</p>
-          <p className="profile-role">Role</p>
-          <div className="profile-tags">
-            <span>Active</span>
+    <div className="page">
+      <section className="card page-card">
+
+        {/* 🔙 Back Arrow */}
+        <button
+          className="link"
+          type="button"
+          onClick={() => navigate("/dashboard")}
+          style={{ alignSelf: "flex-start" }}
+        >
+          ← Back to Dashboard
+        </button>
+
+        <div className="card-header">
+          <h2>Profile</h2>
+          <p>Manage your personal information.</p>
+        </div>
+
+        <div className="profile">
+          <div className="avatar">
+            {user?.username?.charAt(0).toUpperCase()}
+          </div>
+
+          <div className="profile-info">
+            <p className="profile-name">{user?.username}</p>
+            <p className="label">{user?.email}</p>
+            <p className="profile-role">{user?.role}</p>
+
+            <div className="profile-tags">
+              <span>Active</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="profile-grid">
-        <div>
-          <p className="label">Email</p>
-          <p className="value">name@school.edu</p>
-        </div>
-        <div>
-          <p className="label">Phone</p>
-          <p className="value">+00 000 000</p>
-        </div>
-        <div>
-          <p className="label">Department</p>
-          <p className="value">IT</p>
-        </div>
-        <div>
-          <p className="label">Member since</p>
-          <p className="value">2024</p>
-        </div>
-      </div>
-      <button className="primary" type="button">Edit profile</button>
-    </section>
-  )
-}
 
-export default Profile
+      </section>
+    </div>
+  );
+};
+
+export default Profile;
