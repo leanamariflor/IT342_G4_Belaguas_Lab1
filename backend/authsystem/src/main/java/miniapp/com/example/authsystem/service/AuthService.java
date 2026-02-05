@@ -47,4 +47,17 @@ public class AuthService {
         user.setLastActive(LocalDateTime.now());
         return userRepository.save(user);
     }
+
+    public User getCurrentUser() {
+        return userRepository
+                .findAll()
+                .stream()
+                .max((u1, u2) -> {
+                    if (u1.getLastActive() == null) return -1;
+                    if (u2.getLastActive() == null) return 1;
+                    return u1.getLastActive().compareTo(u2.getLastActive());
+                })
+                .orElseThrow(() -> new RuntimeException("No active user"));
+    }
+
 }
