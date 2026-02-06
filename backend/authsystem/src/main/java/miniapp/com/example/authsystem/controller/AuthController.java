@@ -6,13 +6,21 @@ import miniapp.com.example.authsystem.entity.User;
 import miniapp.com.example.authsystem.repository.UserRepository;
 import miniapp.com.example.authsystem.service.AuthService;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(
+        origins = {
+                "http://localhost:5173",
+                "http://192.168.1.12:5173",
+                "http://192.168.1.12:8080",
+                "http://192.168.11.181/"
+        }
+)
 public class AuthController {
 
     private final AuthService authService;
@@ -29,9 +37,17 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody LoginDto dto) {
-        return authService.authenticate(dto);
+    public ResponseEntity<?> login(@RequestBody LoginDto dto) {
+        try {
+            User user = authService.authenticate(dto);
+            return ResponseEntity.ok(user);
+        } catch (RuntimeException e) {
+            return ResponseEntity
+                    .status(401)
+                    .body("Invalid credentials");
+        }
     }
+
 
 
 
