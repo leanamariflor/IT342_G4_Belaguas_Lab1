@@ -4,24 +4,24 @@
 ## Project Description
 
 This project is a **full-stack authentication system** developed as part of the **IT342 Laboratory Activity**.
-It demonstrates how system documentation and diagrams (ERD, Use Case, Activity, Class, and Sequence Diagrams) are translated into a **working integrated system**.
+It demonstrates how system documentation and diagrams (ERD, Use Case, Activity, Class, and Sequence Diagrams) are translated into a **working integrated system** across **web and mobile platforms**.
 
 The system allows users to:
 
 * Register an account
 * Log in securely
 * View a protected dashboard
-* View their profile information
+* View profile information
 * Log out securely
 
 The system is composed of:
 
 * **ReactJS Web Application**
 * **Spring Boot Backend REST API**
-* **Android Kotlin Mobile Application** (structure prepared)
+* **Android Kotlin Mobile Application**
 * **MySQL Database (via XAMPP)**
 
-Both the **Web** and **Mobile** applications connect to the **same backend API**.
+Both the **Web** and **Mobile** applications connect to the **same backend API**, ensuring consistent authentication and data handling.
 
 ---
 
@@ -46,7 +46,9 @@ Both the **Web** and **Mobile** applications connect to the **same backend API**
 
 * Android Studio
 * Kotlin
-
+* Jetpack Compose
+* Retrofit
+* SharedPreferences (Session Management)
 
 ### Database
 
@@ -56,6 +58,7 @@ Both the **Web** and **Mobile** applications connect to the **same backend API**
 
 * IntelliJ IDEA
 * Visual Studio Code
+* Android Studio
 * XAMPP
 * GitHub
 
@@ -78,20 +81,24 @@ IT342_G4_Belaguas_Lab1
 
 ### User Registration
 
-* Users can create an account using email and password
+* Users can create an account using username, email, and password
 * Passwords are encrypted using **BCrypt**
-* Duplicate emails are prevented
+* Duplicate accounts are prevented
 
 ### User Login
 
 * Users log in using email and password
 * Credentials are validated against the database
-* Login state is stored in browser local storage
+* Login state is stored:
+
+  * **Web:** Browser local storage
+  * **Mobile:** SharedPreferences
 
 ### Dashboard (Protected Page)
 
 * Accessible **only when logged in**
-* Redirects to login when accessed while logged out
+* Displays user session information
+* Redirects to login when accessed while logged out (Web & Mobile)
 
 ### Profile Page (Protected Page)
 
@@ -110,9 +117,43 @@ IT342_G4_Belaguas_Lab1
 
 ### User Logout
 
-* Clears session data from local storage
+* Clears session data:
+
+  * **Web:** localStorage
+  * **Mobile:** SharedPreferences
 * Redirects user to login
-* Prevents access via browser back button
+* Prevents access to protected pages after logout
+
+---
+
+## Mobile Application Features (Android Kotlin)
+
+The **Android mobile application** mirrors the functionality of the web application and connects to the same backend API.
+
+Implemented features include:
+
+* **Login Screen**
+
+  * Email and password input
+  * API authentication using Retrofit
+* **Register Screen**
+
+  * User registration via backend API
+* **Dashboard Screen**
+
+  * Protected screen accessible only when logged in
+  * Displays account status and role
+* **Profile Screen**
+
+  * Displays user profile details
+* **Session Management**
+
+  * Login state stored using SharedPreferences
+  * Automatic redirect based on login status
+* **Navigation**
+
+  * Implemented using Jetpack Compose Navigation
+  * Route-based navigation between screens
 
 ---
 
@@ -122,7 +163,10 @@ IT342_G4_Belaguas_Lab1
 * Protected endpoints require authentication
 * `/login` and `/register` are public
 * `/me` is protected by Spring Security
-* Dashboard and Profile routes are protected in React
+* Dashboard and Profile screens are protected in:
+
+  * React (route guarding)
+  * Android (session checks before navigation)
 
 ---
 
@@ -168,7 +212,7 @@ IT342_G4_Belaguas_Lab1
 
 ## How to Run the Web App (ReactJS)
 
-1. Open terminal inside `/web` folder
+1. Open terminal inside `/web`
 2. Install dependencies:
 
    ```bash
@@ -191,12 +235,15 @@ IT342_G4_Belaguas_Lab1
 
 1. Open `/mobile` folder in **Android Studio**
 2. Sync Gradle files
-3. Configure API base URL:
+3. Configure API base URL in Retrofit:
 
    ```
    http://10.0.2.2:8080
    ```
-4. Run using Android Emulator or physical device
+4. Run the app using:
+
+   * Android Emulator, or
+   * Physical Android device
 
 ---
 
@@ -216,6 +263,4 @@ The `/docs` folder contains **one (1) PDF file** with the updated **Functional R
   * Dashboard
   * Profile
   * Logout
-
----
 
