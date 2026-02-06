@@ -9,7 +9,7 @@ const Profile = () => {
     <div className="page">
       <section className="card page-card">
 
-        {/* 🔙 Back Arrow */}
+       
         <button
           className="link"
           type="button"

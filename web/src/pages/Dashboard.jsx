@@ -3,6 +3,11 @@ import "../App.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const stats = [
+    { label: "Account Status", value: "Active" },
+    { label: "Role", value: "User" },
+    { label: "Session", value: "Authenticated" }
+  ];
 
   const goToProfile = () => navigate("/profile");
   const logout = () => {
@@ -20,18 +25,12 @@ const Dashboard = () => {
         </div>
 
         <div className="stats">
-          <div className="stat">
-            <p className="stat-label">Account Status</p>
-            <p className="stat-value">Active</p>
-          </div>
-          <div className="stat">
-            <p className="stat-label">Role</p>
-            <p className="stat-value">User</p>
-          </div>
-          <div className="stat">
-            <p className="stat-label">Session</p>
-            <p className="stat-value">Authenticated</p>
-          </div>
+          {stats.map((stat) => (
+            <div className="stat" key={stat.label}>
+              <p className="stat-label">{stat.label}</p>
+              <p className="stat-value">{stat.value}</p>
+            </div>
+          ))}
         </div>
 
         <div className="list">
