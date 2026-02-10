@@ -13,7 +13,7 @@ const Dashboard = () => {
   const logout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("user");
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
   };
 
   return (
