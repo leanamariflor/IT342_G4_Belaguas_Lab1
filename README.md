@@ -1,5 +1,6 @@
-IT342_G4_Belaguas_Lab1
-Project Description
+**IT342_G4_Belaguas_Lab1**
+
+**Project Description**
 
 IT342_G4_Belaguas_Lab1 is a full-stack authentication system developed as part of the IT342 Laboratory Activity.
 The project demonstrates how system analysis and design artifacts (ERD, Use Case, Activity, Class, and Sequence Diagrams) are translated into a fully working integrated system across Web and Mobile platforms.
