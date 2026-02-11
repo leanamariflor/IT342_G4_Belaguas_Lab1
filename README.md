@@ -1,8 +1,11 @@
 **IT342_G4_Belaguas_Lab1**
 
-**Project Description**
 
-IT342_G4_Belaguas_Lab1 is a full-stack authentication system developed as part of the IT342 Laboratory Activity.
+Name: Leana Mariflor A. Belaguas
+Section: IT342 - G4
+--
+
+## Project Description
 The project demonstrates how system analysis and design artifacts (ERD, Use Case, Activity, Class, and Sequence Diagrams) are translated into a fully working integrated system across Web and Mobile platforms.
 
 The system provides a complete authentication flow, allowing users to:
@@ -20,7 +23,7 @@ The application consists of:
 * Android Kotlin Mobile Application
 * MySQL Database (XAMPP)
 
-Both Web and Mobile clients connect to the same backend API, ensuring consistent authentication, authorization, and data handling.
+**Both Web and Mobile clients connect to the same backend API, ensuring consistent authentication, authorization, and data handling.**
 ---
 
 ## Technologies Used
