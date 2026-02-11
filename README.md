@@ -1,28 +1,26 @@
+**IT342_G4_Belaguas_Lab1**
 
-# IT342_G4_Belaguas_Lab1
+**Project Description**
 
-## Project Description
+IT342_G4_Belaguas_Lab1 is a full-stack authentication system developed as part of the IT342 Laboratory Activity.
+The project demonstrates how system analysis and design artifacts (ERD, Use Case, Activity, Class, and Sequence Diagrams) are translated into a fully working integrated system across Web and Mobile platforms.
 
-This project is a **full-stack authentication system** developed as part of the **IT342 Laboratory Activity**.
-It demonstrates how system documentation and diagrams (ERD, Use Case, Activity, Class, and Sequence Diagrams) are translated into a **working integrated system** across **web and mobile platforms**.
+The system provides a complete authentication flow, allowing users to:
 
-The system allows users to:
+Register an account
+Log in securely
+Access protected pages (Dashboard & Profile)
+View current user information
+Log out and invalidate the session
+The application consists of:
 
-* Register an account
-* Log in securely
-* View a protected dashboard
-* View profile information
-* Log out securely
 
-The system is composed of:
+* ReactJS Web Application
+* pring Boot REST API Backend
+* Android Kotlin Mobile Application
+* MySQL Database (XAMPP)
 
-* **ReactJS Web Application**
-* **Spring Boot Backend REST API**
-* **Android Kotlin Mobile Application**
-* **MySQL Database (via XAMPP)**
-
-Both the **Web** and **Mobile** applications connect to the **same backend API**, ensuring consistent authentication and data handling.
-
+Both Web and Mobile clients connect to the same backend API, ensuring consistent authentication, authorization, and data handling.
 ---
 
 ## Technologies Used
@@ -41,6 +39,7 @@ Both the **Web** and **Mobile** applications connect to the **same backend API**
 * Spring Security
 * BCrypt Password Encoder
 * MySQL Connector
+* JWT (JSON Web Token)
 
 ### Mobile Application
 
@@ -233,19 +232,20 @@ Implemented features include:
 
 ## How to Run the Mobile App (Android Kotlin)
 
-1. Open `/mobile` folder in **Android Studio**
-2. Sync Gradle files
-3. Configure API base URL in Retrofit:
-
-   ```
-   http://10.0.2.2:8080
-   ```
-4. Run the app using:
-
-   * Android Emulator, or
-   * Physical Android device
+- Not yet implemented
 
 ---
+## Environment & Configuration Notes
+
+Backend port: 8080
+
+Web port: 5173
+
+Mobile emulator uses 10.0.2.2 to access localhost
+
+JWT token is stored client-side and sent via Authorization header
+
+Token expires automatically and is removed on logout
 
 ## Documentation (FRS)
 
