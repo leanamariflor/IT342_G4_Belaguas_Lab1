@@ -1,10 +1,3 @@
-**IT342_G4_Belaguas_Lab1**
-
-
-Name: Leana Mariflor A. Belaguas
-
-Section: IT342 - G4
---
 
 ## Project Description
 The project demonstrates how system analysis and design artifacts (ERD, Use Case, Activity, Class, and Sequence Diagrams) are translated into a fully working integrated system across Web and Mobile platforms.
