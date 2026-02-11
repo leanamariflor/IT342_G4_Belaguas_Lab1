@@ -232,17 +232,7 @@ Implemented features include:
 
 ## How to Run the Mobile App (Android Kotlin)
 
-1. Open `/mobile` folder in **Android Studio**
-2. Sync Gradle files
-3. Configure API base URL in Retrofit:
-
-   ```
-   http://10.0.2.2:8080
-   ```
-4. Run the app using:
-
-   * Android Emulator, or
-   * Physical Android device
+- Not yet implemented
 
 ---
 ## Environment & Configuration Notes
