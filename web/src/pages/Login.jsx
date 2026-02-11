@@ -9,8 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    if (isLoggedIn) {
+    const token = sessionStorage.getItem("token");
+    if (token) {
       navigate("/dashboard", { replace: true });
     }
   }, [navigate]);
@@ -23,10 +23,8 @@ const handleLogin = async () => {
     });
 
    
-    localStorage.setItem("isLoggedIn", "true");
-
-   
-    localStorage.setItem("user", JSON.stringify(response.data));
+    sessionStorage.setItem("token", response.data.token);
+    sessionStorage.setItem("user", JSON.stringify(response.data));
 
     navigate("/dashboard", { replace: true });
   } catch (error) {
@@ -71,15 +69,11 @@ const handleLogin = async () => {
             Sign in
           </button>
 
-          <p style={{ marginTop: "1rem", textAlign: "center" }}>
+          <p className="form-footnote">
             Don&apos;t have an account?{" "}
             <Link
               to="/register"
-              style={{
-                color: "#10b981",
-                textDecoration: "none",
-                fontWeight: "500",
-              }}
+              className="text-link"
             >
               Register
             </Link>

@@ -3,7 +3,8 @@ import "../App.css";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const storedUser = JSON.parse(sessionStorage.getItem("user"));
+  const user = storedUser?.user ?? storedUser;
 
   return (
     <div className="page">
@@ -11,10 +12,9 @@ const Profile = () => {
 
        
         <button
-          className="link"
+          className="link link-start"
           type="button"
           onClick={() => navigate("/dashboard")}
-          style={{ alignSelf: "flex-start" }}
         >
           ← Back to Dashboard
         </button>
@@ -32,11 +32,8 @@ const Profile = () => {
           <div className="profile-info">
             <p className="profile-name">{user?.username}</p>
             <p className="label">{user?.email}</p>
-            <p className="profile-role">{user?.role}</p>
 
-            <div className="profile-tags">
-              <span>Active</span>
-            </div>
+            
           </div>
         </div>
 

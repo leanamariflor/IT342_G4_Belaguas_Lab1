@@ -3,17 +3,13 @@ import "../App.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const stats = [
-    { label: "Account Status", value: "Active" },
-    { label: "Role", value: "User" },
-    { label: "Session", value: "Authenticated" }
-  ];
+ 
 
   const goToProfile = () => navigate("/profile");
   const logout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("user");
-    navigate("/", { replace: true });
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -24,14 +20,7 @@ const Dashboard = () => {
           <p>Welcome! You are logged in.</p>
         </div>
 
-        <div className="stats">
-          {stats.map((stat) => (
-            <div className="stat" key={stat.label}>
-              <p className="stat-label">{stat.label}</p>
-              <p className="stat-value">{stat.value}</p>
-            </div>
-          ))}
-        </div>
+       
 
         <div className="list">
           <div className="list-item">

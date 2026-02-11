@@ -1,4 +1,2 @@
-package miniapp.com.example.authsystem.Security;
-
-public class JwtFilter {
+package miniapp.com.example.authsystem.Security;public class JwtFilter {
 }

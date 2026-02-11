@@ -12,8 +12,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    if (isLoggedIn) {
+    const token = sessionStorage.getItem("token");
+    if (token) {
       navigate("/dashboard", { replace: true });
     }
   }, [navigate]);
@@ -90,15 +90,11 @@ const Register = () => {
             Create account
           </button>
 
-          <p style={{ marginTop: "1rem", textAlign: "center" }}>
+          <p className="form-footnote">
             Already have an account?{" "}
             <Link
               to="/login"
-              style={{
-                color: "#10b981",
-                textDecoration: "none",
-                fontWeight: "500",
-              }}
+              className="text-link"
             >
               Login
             </Link>
