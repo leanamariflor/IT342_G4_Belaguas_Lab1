@@ -1,11 +1,14 @@
 package miniapp.com.example.authsystem.controller;
 
+import miniapp.com.example.authsystem.Security.JwtUtil;
 import miniapp.com.example.authsystem.dto.LoginDto;
+import miniapp.com.example.authsystem.dto.LoginResponse;
 import miniapp.com.example.authsystem.dto.UserDto;
 import miniapp.com.example.authsystem.entity.User;
 import miniapp.com.example.authsystem.repository.UserRepository;
 import miniapp.com.example.authsystem.service.AuthService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.core.Authentication;
+
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,23 +43,24 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody LoginDto dto) {
         try {
             User user = authService.authenticate(dto);
-            return ResponseEntity.ok(user);
+            String token = JwtUtil.generateToken(user.getEmail());
+            return ResponseEntity.ok(new LoginResponse(token, user));
         } catch (RuntimeException e) {
-            return ResponseEntity
-                    .status(401)
-                    .body("Invalid credentials");
+            return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
 
 
 
 
+
     @GetMapping("/me")
     public ResponseEntity<User> getCurrentUser(Authentication authentication) {
-        String username = authentication.name();
-        User user = userRepository.findByUsername(username)
+        String email = authentication.getName();
+        User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return ResponseEntity.ok(user);
     }
+
 
 }
